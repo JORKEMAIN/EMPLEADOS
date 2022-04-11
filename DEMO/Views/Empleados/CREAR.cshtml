@@ -1,0 +1,66 @@
+﻿@model DEMO.Models.EMPLEADOS
+
+@{
+    ViewData["Title"] =Model ==null? "CREAR" : "EDITAR";
+}
+
+<h1>@ViewData["Title"] Empleados</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="@ViewData["Title"]">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ID_EMPLEADO" class="control-label"></label>
+                <input asp-for="ID_EMPLEADO" class="form-control" readonly />
+                <span asp-validation-for="ID_EMPLEADO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="N_EMPLEADO" class="control-label"></label>
+                <input asp-for="N_EMPLEADO" class="form-control" />
+                <span asp-validation-for="N_EMPLEADO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="A_PATERNO" class="control-label"></label>
+                <input asp-for="A_PATERNO" class="form-control" />
+                <span asp-validation-for="A_PATERNO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="A_MATERNO" class="control-label"></label>
+                <input asp-for="A_MATERNO" class="form-control" />
+                <span asp-validation-for="A_MATERNO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="F_NACIMIENTO" class="control-label"></label>
+                <input asp-for="F_NACIMIENTO" class="form-control" />
+                <span asp-validation-for="F_NACIMIENTO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SUELDO" class="control-label"></label>
+                <input asp-for="SUELDO" class="form-control" />
+                <span asp-validation-for="SUELDO" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ID_DEPARTAMENTO" class="control-label"></label>
+                <select asp-for="ID_DEPARTAMENTO" class="form-control"
+                asp-items="@(new SelectList(ViewBag.DEPARTAMENTO,"ID_DEPARTAMENTO","N_DEPARTAMENTO"))">
+                <option value="">Seleccione una opción </option>
+                </select>
+                <span asp-validation-for="ID_DEPARTAMENTO" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Aceptar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Regresar a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

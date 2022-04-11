@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DEMO.Models.EMPLEADOS>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="CREAR">Crear Nuevo</a>
+</p>
+<table class="table" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID_EMPLEADO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.N_EMPLEADO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.A_PATERNO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.A_MATERNO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.F_NACIMIENTO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SUELDO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DEPARTAMENTO.N_DEPARTAMENTO)
+            </th>
+            <th>Events</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_EMPLEADO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.N_EMPLEADO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.A_PATERNO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.A_MATERNO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.F_NACIMIENTO)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.SUELDO) 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DEPARTAMENTO.N_DEPARTAMENTO)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "EDITAR", new {  id=item.ID_EMPLEADO }) |
+                @Html.ActionLink("Borrar", "ELIMINAR", new {  id=item.ID_EMPLEADO },
+                 new{onclick="return confirm('¿Estas seguro de eliminar este registro?')"} )
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
